@@ -1,0 +1,12 @@
+CREATE TABLE payments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    booking_id INT NOT NULL,
+    user_id INT NOT NULL,
+    amount DOUBLE NOT NULL,
+    currency VARCHAR(10) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    stripe_id VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

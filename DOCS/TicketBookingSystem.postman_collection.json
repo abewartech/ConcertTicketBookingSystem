@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "2c565d21-3547-49bc-8995-41a92ab4539a",
+		"name": "TicketBookingSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1698165",
+		"_collection_link": "https://pernika.postman.co/workspace/My-Workspace~d640c2de-3777-4aa5-8e59-908bdae67338/collection/1698165-2c565d21-3547-49bc-8995-41a92ab4539a?action=share&source=collection_link&creator=1698165"
+	},
+	"item": [
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dummy@example.com\",\r\n    \"password\": \"Password123\",\r\n    \"first_name\": \"Dummy\",\r\n    \"last_name\": \"User\",\r\n    \"phone\": \"123-456-7890\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8001/api/v1/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"dummy@example.com\",\r\n    \"password\": \"Password123\",\r\n    \"first_name\": \"Dummy\",\r\n    \"last_name\": \"User\",\r\n    \"phone\": \"123-456-7890\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8001/api/v1/users/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Jul 2025 02:47:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"email\": \"dummy@example.com\",\n        \"first_name\": \"Dummy\",\n        \"last_name\": \"User\",\n        \"phone\": \"123-456-7890\",\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"updated_at\": \"0001-01-01T00:00:00Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dummy@example.com\",\r\n    \"password\": \"Password123\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "localhost:8001/api/v1/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"dummy@example.com\",\r\n    \"password\": \"Password123\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "localhost:8001/api/v1/users/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Jul 2025 02:54:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "322"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts\",\n    \"user\": {\n        \"id\": 1,\n        \"email\": \"dummy@example.com\",\n        \"first_name\": \"Dummy\",\n        \"last_name\": \"User\",\n        \"phone\": \"123-456-7890\",\n        \"created_at\": \"2025-07-03T09:47:06+07:00\",\n        \"updated_at\": \"2025-07-03T09:47:06+07:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8001/api/v1/users/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking-service",
+			"item": [
+				{
+					"name": "concerts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/v1/concerts",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"v1",
+								"concerts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/v1/bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment-service",
+			"item": [
+				{
+					"name": "payments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8003/api/v1/payments",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detailpayments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8003/api/v1/payments/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detailpaymentsuser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8003/api/v1/payments/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stripe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTE1OTc2NDYsInVzZXJfaWQiOjF9.7171xQuU6C_63TUlK1YOoRE8UufDTP2XivCaG6vM1ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8003/api/v1/webhook/stripe",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"webhook",
+								"stripe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

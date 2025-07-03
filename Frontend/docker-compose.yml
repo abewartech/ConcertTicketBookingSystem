@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: concert_booking_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: concert_booking
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - concert_booking_network
+
+  # User Service
+  user-service:
+    build: ./user-service
+    container_name: user_service
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASS=rootpassword
+      - DB_NAME=concert_booking_users
+      - JWT_SECRET=your-jwt-secret-key
+    depends_on:
+      - mysql
+    networks:
+      - concert_booking_network
+
+  # Booking Service
+  booking-service:
+    build: ./booking-service
+    container_name: booking_service
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASS=rootpassword
+      - DB_NAME=concert_booking_bookings
+    depends_on:
+      - mysql
+    networks:
+      - concert_booking_network
+
+  # Payment Service
+  payment-service:
+    build: ./payment-service
+    container_name: payment_service
+    ports:
+      - "8003:8003"
+    environment:
+      - PORT=8003
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASS=rootpassword
+      - DB_NAME=concert_booking_payments
+      - STRIPE_SECRET_KEY=your-stripe-secret-key
+    depends_on:
+      - mysql
+    networks:
+      - concert_booking_network
+
+  # Frontend (React)
+  frontend:
+    build: .
+    container_name: concert_booking_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_USER_SERVICE_URL=http://localhost:8001
+      - REACT_APP_BOOKING_SERVICE_URL=http://localhost:8002
+      - REACT_APP_PAYMENT_SERVICE_URL=http://localhost:8003
+    depends_on:
+      - user-service
+      - booking-service
+      - payment-service
+    networks:
+      - concert_booking_network
+
+volumes:
+  mysql_data:
+
+networks:
+  concert_booking_network:
+    driver: bridge

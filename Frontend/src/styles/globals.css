@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100vh;
+  overflow-y: auto;
+  font-family: "Poppins", sans-serif !important; /* Ensure font-family is set here */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.leaflet-container {
+  width: 100wh;
+  height: 35vh;
+}
+
+/* table thead {
+
+} */
+
+table thead th {
+  padding: 16px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  /* background-color: #5c85ff !important; */
+  border-bottom: 8px solid #fff !important;
+  /* color: #fff !important; */
+  /* border-radius: 10px !important; */
+  &:first-child {
+    border-top-left-radius: 10px !important;
+  }
+  &:last-child {
+    border-top-right-radius: 10px !important;
+  }
+}
+
+table tbody td {
+  font-size: 14px !important;
+  padding: 16px !important;
+}
+
+.btn-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 32px; */
+  /* height: 32px; */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #5c85ff;
+  width: fit-content;
+  padding: 8px 16px;
+}
+
+label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  margin-bottom: 4px !important;
+}
+
+.form-group > .leaflet-container {
+  z-index: 99 !important;
+}
+
+input,
+textarea,
+select {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 10px 16px !important;
+  border-radius: 6px !important;
+  background-color: #f5f5f5 !important;
+  outline: none !important;
+  border: none !important;
+  color: #000;
+}
+
+.modal-content {
+  border-radius: 16px !important;
+}
+
+.modal-header {
+  padding: 12px 24px !important;
+}
+
+.modal-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.modal-body {
+  padding: 24px !important;
+}
+
+.btn {
+  padding: 6px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+}
+
+.font-size-10 {
+  font-size: 12px !important;
+}
